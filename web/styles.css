@@ -1,0 +1,24 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #505050;
+}
+
+canvas {
+  display: block;
+  box-sizing: content-box;
+  /* border: 5px solid #000000; */
+  /* border-radius: 2px; */
+}
+
+.p5c-container {
+  top: 150px !important;
+}
