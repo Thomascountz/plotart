@@ -7,11 +7,11 @@ const CONFIG = {
     HEIGHT_MM: 297,
   },
   MOTOR: {
-    PULLEY_RADIUS_MM: 8.75,
+    PULLEY_RADIUS_MM: 8.5,
     PULSES_PER_REVOLUTION: 4095,
   },
   IDLER: {
-    RADIUS_MM: 5,
+    RADIUS_MM: 3,
   },
 };
 
@@ -238,8 +238,8 @@ class Plotter {
   constructor() {
     this.page = new Page();
 
-    const idlerXOffset = this.page.width / 2 + 20;
-    const idlerYOffset = this.page.height / 2 + 20;
+    const idlerXOffset = ((this.page.width / 2) + mmToPx(120)) / 2
+    const idlerYOffset = ((this.page.height / 2) + mmToPx(175)) / 2
     this.leftIdler = new Idler(
       this.page.position.x - idlerXOffset,
       this.page.position.y - idlerYOffset,
@@ -279,6 +279,13 @@ class Plotter {
 
     if (!this.port.opened()) {
       this.port.open(SERIAL_BAUD_RATE);
+    }
+  }
+
+  home() {
+    if (this.port && this.port.opened()) {
+      this.pen.position = createVector(this.page.position.x, this.page.position.y);
+      this.sendMotorPositions();
     }
   }
 
@@ -341,7 +348,7 @@ class Plotter {
       down: [DOWN_ARROW, 74], // Down arrow and 'j'
     };
 
-    const moveAmount = 5;
+    const moveAmount = 2;
 
     if (keys.left.some(keyIsDown)) this.pen.move(-moveAmount, 0);
     if (keys.right.some(keyIsDown)) this.pen.move(moveAmount, 0);
@@ -377,7 +384,8 @@ function setup() {
     mmToPx(CONFIG.PAGE.HEIGHT_MM * 1.5),
   );
   plotter = new Plotter();
-  createButton("Connect Serial").mousePressed(() => plotter.connectSerial());
+  createButton("Connect").mousePressed(() => plotter.connectSerial());
+  createButton("Home").mousePressed(() => plotter.home());
 }
 
 function draw() {
