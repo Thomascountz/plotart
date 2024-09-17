@@ -1,0 +1,235 @@
+{
+   "widgets": [
+      {
+         "type": "single_value_number",
+         "gridPos": {
+            "h": 6,
+            "w": 6,
+            "x": 0,
+            "y": 0
+         },
+         "series": [
+            {
+               "name": "coordinates",
+               "sourceNames": [
+                  "coordinates"
+               ],
+               "formula": "",
+               "options": {
+                  "stroke": "rgba(231,76,60,1)",
+                  "fill": "rgba(231,76,60,0.1)"
+               },
+               "type": "xy"
+            }
+         ],
+         "precision_mode": 1
+      },
+      {
+         "type": "single_value_number",
+         "gridPos": {
+            "h": 3,
+            "w": 6,
+            "x": 0,
+            "y": 0
+         },
+         "series": [
+            {
+               "name": "L_length",
+               "sourceNames": [
+                  "L_length"
+               ],
+               "formula": "",
+               "options": {
+                  "stroke": "rgba(231,76,60,1)",
+                  "fill": "rgba(231,76,60,0.1)"
+               },
+               "unit": "mm\r",
+               "type": "number"
+            }
+         ],
+         "precision_mode": 1
+      },
+      {
+         "type": "single_value_number",
+         "gridPos": {
+            "h": 3,
+            "w": 6,
+            "x": 0,
+            "y": 0
+         },
+         "series": [
+            {
+               "name": "R_length",
+               "sourceNames": [
+                  "R_length"
+               ],
+               "formula": "",
+               "options": {
+                  "stroke": "rgba(231,76,60,1)",
+                  "fill": "rgba(231,76,60,0.1)"
+               },
+               "unit": "mm\r",
+               "type": "number"
+            }
+         ],
+         "precision_mode": 1
+      },
+      {
+         "type": "chart",
+         "gridPos": {
+            "h": 6,
+            "w": 6,
+            "x": 0,
+            "y": 0
+         },
+         "series": [
+            {
+               "name": "L_position",
+               "sourceNames": [
+                  "L_position"
+               ],
+               "formula": "",
+               "options": {
+                  "_serie": "L_position",
+                  "stroke": "rgba(231,76,60,1)",
+                  "fill": "rgba(231,76,60,0.1)"
+               },
+               "unit": "steps\r",
+               "type": "number"
+            },
+            {
+               "name": "L_position_target",
+               "sourceNames": [
+                  "L_position_target"
+               ],
+               "formula": "",
+               "options": {
+                  "_serie": "L_position_target",
+                  "stroke": "rgba(52,152,219,1)",
+                  "fill": "rgba(52,152,219,0.1)"
+               },
+               "unit": "steps\r",
+               "type": "number"
+            }
+         ]
+      },
+      {
+         "type": "chart",
+         "gridPos": {
+            "h": 6,
+            "w": 6,
+            "x": 0,
+            "y": 0
+         },
+         "series": [
+            {
+               "name": "R_position",
+               "sourceNames": [
+                  "R_position"
+               ],
+               "formula": "",
+               "options": {
+                  "_serie": "R_position",
+                  "stroke": "rgba(231,76,60,1)",
+                  "fill": "rgba(231,76,60,0.1)"
+               },
+               "unit": "steps\r",
+               "type": "number"
+            },
+            {
+               "name": "R_position_target",
+               "sourceNames": [
+                  "R_position_target"
+               ],
+               "formula": "",
+               "options": {
+                  "_serie": "R_position_target",
+                  "stroke": "rgba(52,152,219,1)",
+                  "fill": "rgba(52,152,219,0.1)"
+               },
+               "unit": "steps\r",
+               "type": "number"
+            }
+         ]
+      },
+      {
+         "type": "chart",
+         "gridPos": {
+            "h": 6,
+            "w": 6,
+            "x": 0,
+            "y": 0
+         },
+         "series": [
+            {
+               "name": "L_length",
+               "sourceNames": [
+                  "L_length"
+               ],
+               "formula": "",
+               "options": {
+                  "_serie": "L_length",
+                  "stroke": "rgba(231,76,60,1)",
+                  "fill": "rgba(231,76,60,0.1)"
+               },
+               "unit": "mm\r",
+               "type": "number"
+            },
+            {
+               "name": "L_length_target",
+               "sourceNames": [
+                  "L_length_target"
+               ],
+               "formula": "",
+               "options": {
+                  "_serie": "L_length_target",
+                  "stroke": "rgba(52,152,219,1)",
+                  "fill": "rgba(52,152,219,0.1)"
+               },
+               "unit": "mm\r",
+               "type": "number"
+            }
+         ]
+      },
+      {
+         "type": "chart",
+         "gridPos": {
+            "h": 6,
+            "w": 6,
+            "x": 0,
+            "y": 0
+         },
+         "series": [
+            {
+               "name": "R_length",
+               "sourceNames": [
+                  "R_length"
+               ],
+               "formula": "",
+               "options": {
+                  "_serie": "R_length",
+                  "stroke": "rgba(231,76,60,1)",
+                  "fill": "rgba(231,76,60,0.1)"
+               },
+               "unit": "mm\r",
+               "type": "number"
+            },
+            {
+               "name": "R_length_target",
+               "sourceNames": [
+                  "R_length_target"
+               ],
+               "formula": "",
+               "options": {
+                  "_serie": "R_length_target",
+                  "stroke": "rgba(52,152,219,1)",
+                  "fill": "rgba(52,152,219,0.1)"
+               },
+               "unit": "mm\r",
+               "type": "number"
+            }
+         ]
+      }
+   ],
+   "viewDuration": "300"
+}

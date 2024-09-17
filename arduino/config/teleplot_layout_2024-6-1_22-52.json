@@ -1,0 +1,249 @@
+{
+   "widgets": [
+      {
+         "type": "single_value_number",
+         "gridPos": {
+            "h": 6,
+            "w": 3,
+            "x": 0,
+            "y": 0
+         },
+         "series": [
+            {
+               "name": "x",
+               "sourceNames": [
+                  "x"
+               ],
+               "formula": "",
+               "options": {
+                  "stroke": "rgba(231,76,60,1)",
+                  "fill": "rgba(231,76,60,0.1)"
+               },
+               "type": "number"
+            }
+         ],
+         "precision_mode": 0
+      },
+      {
+         "type": "single_value_number",
+         "gridPos": {
+            "h": 6,
+            "w": 3,
+            "x": 0,
+            "y": 0
+         },
+         "series": [
+            {
+               "name": "y",
+               "sourceNames": [
+                  "y"
+               ],
+               "formula": "",
+               "options": {
+                  "stroke": "rgba(231,76,60,1)",
+                  "fill": "rgba(231,76,60,0.1)"
+               },
+               "type": "number"
+            }
+         ],
+         "precision_mode": 0
+      },
+      {
+         "type": "single_value_number",
+         "gridPos": {
+            "h": 6,
+            "w": 3,
+            "x": 0,
+            "y": 0
+         },
+         "series": [
+            {
+               "name": "stepperLeft_position",
+               "sourceNames": [
+                  "stepperLeft_position"
+               ],
+               "formula": "",
+               "options": {
+                  "stroke": "rgba(231,76,60,1)",
+                  "fill": "rgba(231,76,60,0.1)"
+               },
+               "type": "number"
+            }
+         ],
+         "precision_mode": 0
+      },
+      {
+         "type": "single_value_number",
+         "gridPos": {
+            "h": 6,
+            "w": 3,
+            "x": 0,
+            "y": 0
+         },
+         "series": [
+            {
+               "name": "stepperRight_position",
+               "sourceNames": [
+                  "stepperRight_position"
+               ],
+               "formula": "",
+               "options": {
+                  "stroke": "rgba(231,76,60,1)",
+                  "fill": "rgba(231,76,60,0.1)"
+               },
+               "type": "number"
+            }
+         ],
+         "precision_mode": 0
+      },
+      {
+         "type": "chart",
+         "gridPos": {
+            "h": 6,
+            "w": 6,
+            "x": 0,
+            "y": 0
+         },
+         "series": [
+            {
+               "name": "stepperLeft_position",
+               "sourceNames": [
+                  "stepperLeft_position"
+               ],
+               "formula": "",
+               "options": {
+                  "_serie": "stepperLeft_position",
+                  "stroke": "rgba(231,76,60,1)",
+                  "fill": "rgba(231,76,60,0.1)"
+               },
+               "type": "number"
+            },
+            {
+               "name": "stepperLeft_target",
+               "sourceNames": [
+                  "stepperLeft_target"
+               ],
+               "formula": "",
+               "options": {
+                  "_serie": "stepperLeft_target",
+                  "stroke": "rgba(52,152,219,1)",
+                  "fill": "rgba(52,152,219,0.1)"
+               },
+               "type": "number"
+            }
+         ]
+      },
+      {
+         "type": "chart",
+         "gridPos": {
+            "h": 6,
+            "w": 6,
+            "x": 0,
+            "y": 0
+         },
+         "series": [
+            {
+               "name": "stepperRight_position",
+               "sourceNames": [
+                  "stepperRight_position"
+               ],
+               "formula": "",
+               "options": {
+                  "_serie": "stepperRight_position",
+                  "stroke": "rgba(231,76,60,1)",
+                  "fill": "rgba(231,76,60,0.1)"
+               },
+               "type": "number"
+            },
+            {
+               "name": "stepperRight_target",
+               "sourceNames": [
+                  "stepperRight_target"
+               ],
+               "formula": "",
+               "options": {
+                  "_serie": "stepperRight_target",
+                  "stroke": "rgba(52,152,219,1)",
+                  "fill": "rgba(52,152,219,0.1)"
+               },
+               "type": "number"
+            }
+         ]
+      },
+      {
+         "type": "chart",
+         "gridPos": {
+            "h": 6,
+            "w": 6,
+            "x": 0,
+            "y": 0
+         },
+         "series": [
+            {
+               "name": "stepperLeft_raw_position",
+               "sourceNames": [
+                  "stepperLeft_raw_position"
+               ],
+               "formula": "",
+               "options": {
+                  "_serie": "stepperLeft_raw_position",
+                  "stroke": "rgba(231,76,60,1)",
+                  "fill": "rgba(231,76,60,0.1)"
+               },
+               "type": "number"
+            },
+            {
+               "name": "stepperLeft_raw_target",
+               "sourceNames": [
+                  "stepperLeft_raw_target"
+               ],
+               "formula": "",
+               "options": {
+                  "_serie": "stepperLeft_raw_target",
+                  "stroke": "rgba(52,152,219,1)",
+                  "fill": "rgba(52,152,219,0.1)"
+               },
+               "type": "number"
+            }
+         ]
+      },
+      {
+         "type": "chart",
+         "gridPos": {
+            "h": 6,
+            "w": 6,
+            "x": 0,
+            "y": 0
+         },
+         "series": [
+            {
+               "name": "stepperRight_raw_position",
+               "sourceNames": [
+                  "stepperRight_raw_position"
+               ],
+               "formula": "",
+               "options": {
+                  "_serie": "stepperRight_raw_position",
+                  "stroke": "rgba(231,76,60,1)",
+                  "fill": "rgba(231,76,60,0.1)"
+               },
+               "type": "number"
+            },
+            {
+               "name": "stepperRight_raw_target",
+               "sourceNames": [
+                  "stepperRight_raw_target"
+               ],
+               "formula": "",
+               "options": {
+                  "_serie": "stepperRight_raw_target",
+                  "stroke": "rgba(52,152,219,1)",
+                  "fill": "rgba(52,152,219,0.1)"
+               },
+               "type": "number"
+            }
+         ]
+      }
+   ],
+   "viewDuration": "300"
+}
