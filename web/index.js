@@ -1,4 +1,5 @@
 // Configuration
+SERIAL_BAUD_RATE = 115200;
 const CONFIG = {
   PX_RATIO: 2, // Pixel to millimeter conversion ratio
   PAGE: {
@@ -52,19 +53,17 @@ class Motor {
     this.stepSize = (2 * Math.PI) / CONFIG.MOTOR.PULSES_PER_REVOLUTION;
   }
 
-  update(penPosition) {
-    this.pulses =
-      this.direction *
-        Math.round(
-          this.idler.distToPen(penPosition) /
-            (this.stepSize * this.pulleyRadius),
-        ) -
+  penPosToPulses(penPosition) {
+    return this.direction *
+      Math.round(
+        this.idler.distToPen(penPosition) /
+        (this.stepSize * this.pulleyRadius),
+      ) -
       this.pulseOffset;
   }
 
   reset(penPosition) {
-    this.update(penPosition);
-    this.pulseOffset += this.pulses;
+    this.pulseOffset += this.penPosToPulses(penPosition)
     this.pulses = 0;
   }
 
@@ -269,13 +268,62 @@ class Plotter {
 
     this.leftMotor.reset(this.pen.position);
     this.rightMotor.reset(this.pen.position);
+
+    this.port = null;
+  }
+
+  connectSerial() {
+    if (!this.port) {
+      this.port = createSerial();
+    }
+
+    if (!this.port.opened()) {
+      this.port.open(SERIAL_BAUD_RATE);
+    }
   }
 
   update() {
     this.handlePenMovement();
     this.constrainPenPosition();
-    this.leftMotor.update(this.pen.position);
-    this.rightMotor.update(this.pen.position);
+
+    const currentTime = millis();
+    if (currentTime - lastTelemetryTime >= telemetryInterval) {
+      this.requestTelemetry();
+      lastTelemetryTime = currentTime;
+    }
+    this.readSerialData();
+  }
+
+  sendMotorPositions() {
+    if (this.port && this.port.opened()) {
+      const leftPosition = this.leftMotor.penPosToPulses(this.pen.position);
+      const rightPosition = this.rightMotor.penPosToPulses(this.pen.position);
+      this.port.write(`M ${leftPosition} ${rightPosition}\n`);
+    }
+  }
+
+  requestTelemetry() {
+    if (this.port && this.port.opened()) {
+      this.port.write('T');
+    }
+  }
+
+  readSerialData() {
+    if (this.port && this.port.opened()) {
+      let line = this.port.readUntil("\n");
+      if (line) {
+        this.parseTelemetry(line.trim());
+      }
+    }
+  }
+
+  parseTelemetry(data) {
+    const [leftPosition, rightPosition] = data.split(',').map(Number);
+    if (!isNaN(leftPosition) && !isNaN(rightPosition)) {
+      this.leftMotor.pulses = leftPosition;
+      this.rightMotor.pulses = rightPosition;
+      console.log(`M ${leftPosition} ${rightPosition}\n`);
+    }
   }
 
   show() {
@@ -299,6 +347,8 @@ class Plotter {
     if (keys.right.some(keyIsDown)) this.pen.move(moveAmount, 0);
     if (keys.up.some(keyIsDown)) this.pen.move(0, -moveAmount);
     if (keys.down.some(keyIsDown)) this.pen.move(0, moveAmount);
+
+    this.sendMotorPositions();
   }
 
   constrainPenPosition() {
@@ -316,6 +366,9 @@ class Plotter {
 }
 
 let plotter;
+let port;
+let lastTelemetryTime = 0;
+const telemetryInterval = 1000;
 
 function setup() {
   rectMode(CENTER);
@@ -324,6 +377,7 @@ function setup() {
     mmToPx(CONFIG.PAGE.HEIGHT_MM * 1.5),
   );
   plotter = new Plotter();
+  createButton("Connect Serial").mousePressed(() => plotter.connectSerial());
 }
 
 function draw() {
